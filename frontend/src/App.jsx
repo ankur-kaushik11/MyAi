@@ -11,7 +11,7 @@ function App() {
   const [authMode, setAuthMode] = useState('login');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [selectedPersona, setSelectedPersona] = useState('Senior Software Engineer');
+  const [selectedPersona, setSelectedPersona] = useState('Engineer');
 
   // App State
   const [activeTab, setActiveTab] = useState('chat');
@@ -188,10 +188,10 @@ function App() {
               <div className="persona-selector" style={{ marginTop: 0 }}>
                 <label>CHOOSE YOUR SPECIALTY</label>
                 <select value={selectedPersona} onChange={e => setSelectedPersona(e.target.value)}>
-                  <option>Senior Software Engineer</option>
-                  <option>Michelin-level Chef</option>
-                  <option>Medical Practitioner</option>
-                  <option>Legal Expert</option>
+                  <option>Engineer</option>
+                  <option>Chef</option>
+                  <option>Doctor</option>
+                  <option>Advocate</option>
                 </select>
               </div>
             )}
