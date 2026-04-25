@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import { Send, Sparkles, Brain, FileText, Upload, Plus, Trash2, Zap, LayoutDashboard, MessageCircle, LogOut, UserCircle, Key, Mail } from 'lucide-react';
+import { Send, Sparkles, Brain, FileText, Upload, Plus, Trash2, Zap, LayoutDashboard, MessageCircle, MessageSquare, LogOut, UserCircle, Key, Mail } from 'lucide-react';
 
 const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
