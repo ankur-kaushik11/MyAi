@@ -441,20 +441,24 @@ header {
   padding-bottom: 60px;
 }
 
-/* --- ULTRA-MOBILE OPTIMIZATION (Redmi, OnePlus, Android) --- */
-@media (max-width: 1024px) {
-  :root { --sidebar-width: 70px; }
-  .sidebar span, .sidebar p, .nav-item span, .sidebar-brand span, .user-profile div { display: none; }
-  .sidebar-brand { justify-content: center; margin-bottom: 25px; }
-  .nav-item { justify-content: center; padding: 12px; height: 50px; width: 50px; border-radius: 50%; margin: 0 auto 15px; }
-  .sidebar-footer { padding: 15px 5px; }
+/* --- CONTINUUM RESPONSIVENESS (Fixing 500px/1000px Gaps) --- */
+
+/* Desktop & Large Tablets (Above 1024px) */
+@media (min-width: 1025px) {
+  .sidebar { width: var(--sidebar-width); }
 }
 
-@media (max-width: 768px) {
-  :root {
-    --font-header: 1.1rem;
-  }
-  
+/* Intermediate Tablets (800px to 1024px) */
+@media (max-width: 1024px) {
+  :root { --sidebar-width: 80px; }
+  .sidebar span, .sidebar p, .nav-item span, .sidebar-brand span, .user-profile div, .system-author-info { display: none; }
+  .sidebar-brand { justify-content: center; margin-bottom: 30px; }
+  .nav-item { justify-content: center; padding: 14px; height: 50px; width: 50px; border-radius: 12px; margin: 0 auto 15px; }
+  .sidebar-footer { padding: 20px 10px; }
+}
+
+/* Mobile & Small Tablets (Below 800px) */
+@media (max-width: 800px) {
   .app-container { flex-direction: column; overflow: hidden; height: 100vh; position: fixed; width: 100%; top: 0; left: 0; }
   
   .sidebar {
@@ -470,6 +474,7 @@ header {
     backdrop-filter: blur(30px);
     position: sticky;
     top: 0;
+    z-index: 100;
   }
   
   .sidebar-brand { margin-bottom: 0; gap: 6px; font-size: 1rem; }
@@ -484,10 +489,10 @@ header {
     right: 0;
     background: rgba(18, 18, 20, 0.98);
     backdrop-filter: blur(20px);
-    padding: 12px 10px;
+    padding: env(safe-area-inset-bottom, 12px) 10px;
     border-top: 1px solid var(--border-color);
     justify-content: space-around;
-    z-index: 100;
+    z-index: 101;
   }
   
   .nav-item { margin: 0; flex: 1; height: auto; border-radius: 0; padding: 5px; background: transparent !important; }
@@ -501,51 +506,20 @@ header {
     overflow: hidden;
   }
   
-  header { padding: 10px 15px; min-height: 55px; }
-  header h1 { font-size: 0.9rem; letter-spacing: 1px; }
-  .header-info p { font-size: 0.7rem; }
+  .chat-container { padding: 10px; padding-bottom: 90px; }
+  .input-wrapper { bottom: 75px; padding: 10px; }
   
-  .chat-container { 
-    padding: 10px; 
-    padding-bottom: 80px; /* Space for input */
-    overflow-x: hidden;
-  }
-  .bubble { max-width: 92%; font-size: 0.9rem; padding: 12px 16px; }
-  
-  .input-wrapper { 
-    position: fixed;
-    bottom: 75px; /* Above bottom nav */
-    left: 0;
-    right: 0;
-    padding: 10px;
-    background: linear-gradient(to top, var(--bg-color) 80%, transparent);
-    z-index: 90;
-  }
-  
-  .input-container { border-radius: 20px; min-height: 48px; background: rgba(255, 255, 255, 0.04); }
-  
-  .auth-card { 
-    width: 92% !important; 
-    padding: 30px 20px !important;
-    border-radius: 20px;
-  }
-
-  .file-list { 
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding-bottom: 100px;
-  }
+  .auth-card { width: 94% !important; padding: 25px 15px !important; }
+  .kb-container { padding: 10px; }
   
   .sidebar-footer, .bg-sticker, .app-container::before { display: none !important; }
 }
 
-/* Landscape Mode Fix */
-@media (max-height: 450px) and (orientation: landscape) {
+/* Landscape & Ultra-Short Screens */
+@media (max-height: 500px) {
   .sidebar { height: 45px; }
-  nav { display: none; }
-  .main-content { height: calc(100vh - 45px); }
-  .auth-card { padding: 15px !important; overflow-y: auto; height: 95vh; }
+  header { display: none; }
 }
+
 
 
