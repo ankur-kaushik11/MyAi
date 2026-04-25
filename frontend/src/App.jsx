@@ -229,23 +229,28 @@ function App() {
       <aside className="sidebar">
         <div className="sidebar-brand">
           <div className="brand-icon">
-            <Brain size={24} color="var(--accent-color)" />
+            <Brain size={24} />
           </div>
           <span>MyAi</span>
         </div>
 
         <nav>
           <button className={`nav-item ${activeTab === 'chat' ? 'active' : ''}`} onClick={() => setActiveTab('chat')}>
-            <MessageCircle size={20} />
-            Private Chat
+            <MessageSquare size={20} />
+            <span>Chat</span>
           </button>
           <button className={`nav-item ${activeTab === 'knowledge' ? 'active' : ''}`} onClick={() => setActiveTab('knowledge')}>
             <LayoutDashboard size={20} />
-            My Knowledge
+            <span>Files</span>
+          </button>
+          {/* Mobile Logout Button (Hidden on Desktop via CSS) */}
+          <button onClick={handleLogout} className="nav-item mobile-only logout-btn" style={{ color: '#ef4444' }}>
+            <LogOut size={20} />
+            <span>Exit</span>
           </button>
         </nav>
 
-        <div style={{ marginTop: 'auto', padding: '16px 0', borderTop: '1px solid var(--border-color)', opacity: 0.6 }}>
+        <div className="system-author-info" style={{ marginTop: 'auto', padding: '16px 0', borderTop: '1px solid var(--border-color)', opacity: 0.6 }}>
           <p style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '1px' }}>SYSTEM OWNER</p>
           <p style={{ fontSize: '0.8rem', color: 'var(--accent-color)', fontWeight: 600 }}>Ankur Kaushik</p>
           <p style={{ fontSize: '0.6rem', color: 'var(--text-muted)' }}>ankurkaushik672@gmail.com</p>

@@ -477,51 +477,78 @@ header {
   
   /* Top Navigation Bar */
   .sidebar {
-    height: 60px;
+    height: 70px;
     width: 100%;
     flex-direction: row;
-    padding: 0;
+    padding: 0 5px;
     border-right: none;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 2px solid var(--border-color);
     background: rgba(10, 10, 12, 0.98);
     position: relative;
-    z-index: 100;
+    z-index: 1000;
   }
   
-  .sidebar-brand { display: none; } /* Hide brand text to save horizontal space */
+  .sidebar-brand { display: none; }
+  .system-author-info { display: none !important; }
   
   nav { 
     flex-direction: row; 
     width: 100%;
     height: 100%;
-    gap: 0;
+    gap: 5px;
+    background: transparent;
+    border: none;
+    position: relative;
+    padding: 5px;
   }
   
   .nav-item { 
     flex: 1; 
     margin: 0; 
     height: 100%; 
-    border-radius: 0; 
+    border-radius: 12px; 
     justify-content: center;
-    border-bottom: 2px solid transparent;
-    font-size: 0.8rem;
-    padding: 0;
-    background: transparent !important;
+    flex-direction: column;
+    font-size: 0.7rem;
+    padding: 5px;
+    background: rgba(255, 255, 255, 0.03) !important;
+    gap: 4px;
+    transition: all 0.3s ease;
   }
   
   .nav-item.active { 
-    border-bottom: 2px solid var(--accent-color);
+    background: rgba(255, 179, 0, 0.1) !important;
     color: var(--accent-color);
+    border-bottom: none;
+    box-shadow: inset 0 0 10px rgba(255, 179, 0, 0.05);
   }
+
+  .mobile-only { display: flex !important; }
+  .logout-btn { background: rgba(239, 68, 68, 0.05) !important; }
   
-  .nav-item span { display: block !important; margin-left: 8px; font-weight: 600; }
+  .nav-item span { display: block !important; margin: 0; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
   
   /* Main Content Area */
   .main-content { 
-    height: calc(100dvh - 60px); 
+    height: calc(100dvh - 70px); 
     width: 100%;
     padding: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
+  
+  .kb-container { 
+    padding: 15px; 
+    min-height: 100%;
+    overflow-y: auto;
+    display: block; /* Ensure it flows naturally */
+  }
+
+  .chat-container { 
+    height: calc(100% - 130px);
+    padding: 10px 15px;
+  }
+
   
   header { 
     padding: 20px 15px; 
