@@ -441,41 +441,111 @@ header {
   padding-bottom: 60px;
 }
 
-/* --- MOBILE RESPONSIVENESS --- */
+/* --- ULTRA-MOBILE OPTIMIZATION (Redmi, OnePlus, Android) --- */
 @media (max-width: 1024px) {
-  :root { --sidebar-width: 80px; }
+  :root { --sidebar-width: 70px; }
   .sidebar span, .sidebar p, .nav-item span, .sidebar-brand span, .user-profile div { display: none; }
-  .sidebar-brand { justify-content: center; margin-bottom: 30px; }
-  .nav-item { justify-content: center; padding: 14px; }
-  .sidebar-footer { padding: 20px 10px; }
+  .sidebar-brand { justify-content: center; margin-bottom: 25px; }
+  .nav-item { justify-content: center; padding: 12px; height: 50px; width: 50px; border-radius: 50%; margin: 0 auto 15px; }
+  .sidebar-footer { padding: 15px 5px; }
 }
 
 @media (max-width: 768px) {
-  .app-container { flex-direction: column; }
+  :root {
+    --font-header: 1.1rem;
+  }
+  
+  .app-container { flex-direction: column; overflow: hidden; height: 100vh; position: fixed; width: 100%; top: 0; left: 0; }
+  
   .sidebar {
     width: 100%;
-    height: auto;
+    height: 60px;
     flex-direction: row;
-    padding: 10px 20px;
+    padding: 0 15px;
     border-right: none;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 2px solid var(--border-color);
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10, 10, 12, 0.95);
+    backdrop-filter: blur(30px);
+    position: sticky;
+    top: 0;
   }
-  .sidebar-brand { margin-bottom: 0; }
-  nav { flex-direction: row; flex: 0; gap: 4px; }
-  .sidebar-footer, .bg-sticker { display: none; }
   
-  .main-content { height: calc(100vh - 70px); }
-  header { padding: 16px 20px; }
-  .chat-container { padding: 10px 20px; }
-  .input-wrapper { padding: 10px 20px 20px 20px; }
-  .kb-container { padding: 20px; }
+  .sidebar-brand { margin-bottom: 0; gap: 6px; font-size: 1rem; }
+  .sidebar-brand .brand-icon { width: 28px; height: 28px; }
   
-  .auth-card { width: 90% !important; padding: 24px !important; }
-  .auth-card h1 { font-size: 1.5rem !important; }
+  nav { 
+    flex-direction: row; 
+    gap: 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(18, 18, 20, 0.98);
+    backdrop-filter: blur(20px);
+    padding: 12px 10px;
+    border-top: 1px solid var(--border-color);
+    justify-content: space-around;
+    z-index: 100;
+  }
+  
+  .nav-item { margin: 0; flex: 1; height: auto; border-radius: 0; padding: 5px; background: transparent !important; }
+  .nav-item.active { color: var(--accent-color); }
+  .nav-item span { display: block; font-size: 0.65rem; margin-top: 4px; font-weight: 600; }
+  
+  .main-content { 
+    height: calc(100vh - 125px); 
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  header { padding: 10px 15px; min-height: 55px; }
+  header h1 { font-size: 0.9rem; letter-spacing: 1px; }
+  .header-info p { font-size: 0.7rem; }
+  
+  .chat-container { 
+    padding: 10px; 
+    padding-bottom: 80px; /* Space for input */
+    overflow-x: hidden;
+  }
+  .bubble { max-width: 92%; font-size: 0.9rem; padding: 12px 16px; }
+  
+  .input-wrapper { 
+    position: fixed;
+    bottom: 75px; /* Above bottom nav */
+    left: 0;
+    right: 0;
+    padding: 10px;
+    background: linear-gradient(to top, var(--bg-color) 80%, transparent);
+    z-index: 90;
+  }
+  
+  .input-container { border-radius: 20px; min-height: 48px; background: rgba(255, 255, 255, 0.04); }
+  
+  .auth-card { 
+    width: 92% !important; 
+    padding: 30px 20px !important;
+    border-radius: 20px;
+  }
+
+  .file-list { 
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 100px;
+  }
+  
+  .sidebar-footer, .bg-sticker, .app-container::before { display: none !important; }
 }
 
-@media (max-width: 480px) {
-  .file-list { grid-template-columns: 1fr; }
-  .header-info h1 { font-size: 1rem; }
-  .active-pill { display: none; }
+/* Landscape Mode Fix */
+@media (max-height: 450px) and (orientation: landscape) {
+  .sidebar { height: 45px; }
+  nav { display: none; }
+  .main-content { height: calc(100vh - 45px); }
+  .auth-card { padding: 15px !important; overflow-y: auto; height: 95vh; }
 }
+
+
